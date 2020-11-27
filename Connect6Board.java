@@ -149,11 +149,36 @@ public class Connect6Board extends Board {
 		return board;
 		
 	}
-	public void setPiece(int r, int c, int i) {
-		board[r][c] = i;
+	public void setPiece(int c, int i) {
+		int localRows = 0;
+		for(int k = 0; k < rows; k++) {
+			if(board[localRows][c] == 1 && localRows < rows - 1) {
+				localRows++;
+			}
+		}
+		
+		if(localRows == 0 && board[localRows][c] == 1 ) {
+			board[localRows][c] = i;
+		}
+		else if(localRows < rows &&  board[localRows][c] == 1 ) {
+			board[localRows][c] = i;
+		}
+		else if(board[localRows][c] != 1) {
+			board[localRows - 1][c] = i;
+		}
+		else {
+			System.out.println("local rows = " + localRows);
+			System.out.println("Invalid move. Make another move.");
+		}
 	}
 	public PlayerPiece getPiece() {
 		return pPiece;
+	}
+	public int getRows() {
+		return rows;
+	}
+    public int getCols() {
+		return cols;
 	}
 
 }
