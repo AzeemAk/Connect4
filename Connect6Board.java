@@ -6,15 +6,15 @@ public class Connect6Board extends Board {
 	private PlayerPiece pPiece;
 	private CpuPiece cPiece;
 	private int[][] board = new int[rows][cols];
-	public boolean checkWin(int r, int c) { 
+	public boolean checkWin(int r, int c, int i) { 
 		if(c <= 4) { // checking to the right
 			int count = 0;
 			int localCol = c;
-			while(board[r][localCol] == 2) {
+			while(board[r][localCol] == i) {
 				localCol++;
 				count++;
 				if(count == 6) {
-					System.out.println("won to the left.");
+					System.out.println("won to the right.");
 					return true;
 				}
 			}
@@ -23,7 +23,7 @@ public class Connect6Board extends Board {
 		if(c >= 5) { // checking to the left
 			int count = 0;
 			int localCol = c;
-			while(board[r][localCol] == 2) {
+			while(board[r][localCol] == i) {
 				localCol--;
 				count++;
 				if(count == 6) {
@@ -37,8 +37,7 @@ public class Connect6Board extends Board {
 			
 			int count = 0;
 			int localRow = r;
-			System.out.println(r + " " + c);
-			while(board[localRow][c] == 2) {
+			while(board[localRow][c] == i) {
 				localRow--;
 				count++;
 				if(count == 6) {
@@ -51,8 +50,7 @@ public class Connect6Board extends Board {
 		if(r <= 2) { // checking the bottom
 			int count = 0;
 			int localRow = r;
-			System.out.println(r + " " + c);
-			while(board[localRow][c] == 2) {
+			while(board[localRow][c] == i) {
 				localRow++;
 				count++;
 				if(count == 6) {
@@ -66,7 +64,7 @@ public class Connect6Board extends Board {
 			int localRow = r;
 			int localCol = c;
 			int count = 0;
-			while(board[localRow][localCol] == 2) {
+			while(board[localRow][localCol] == i) {
 				localRow++;
 				localCol++;
 				count++;
@@ -81,7 +79,7 @@ public class Connect6Board extends Board {
 			int localRow = r;
 			int localCol = c;
 			int count = 0;
-			while(board[localRow][localCol] == 2) {
+			while(board[localRow][localCol] == i) {
 				localRow++;
 				localCol--;
 				count++;
@@ -96,7 +94,7 @@ public class Connect6Board extends Board {
 			int localRow = r;
 			int localCol = c;
 			int count = 0;
-			while(board[localRow][localCol] == 2) {
+			while(board[localRow][localCol] == i) {
 				localRow--;
 				localCol++;
 				count++;
@@ -107,11 +105,11 @@ public class Connect6Board extends Board {
 				
 			}
 		}
-		if(r >= 5 && c <= 5) { //  checking diagonal top-left
+		if(r >= 5 && c >= 5) { //  checking diagonal top-left
 			int localRow = r;
 			int localCol = c;
 			int count = 0;
-			while(board[localRow][localCol] == 2) {
+			while(board[localRow][localCol] == i) {
 				localRow--;
 				localCol--;
 				count++;
@@ -122,7 +120,7 @@ public class Connect6Board extends Board {
 				
 			}
 		}
-		System.out.println("Too bad.");
+		
 		return false;
 		
 	}
@@ -140,7 +138,7 @@ public class Connect6Board extends Board {
 	public void setBoard() {
 		for(int r = 0; r < rows; r++) {
 			for(int c = 0; c < cols; c++) {
-				board[r][c] = 1;
+				board[r][c] = 0;
 			}
 		}
 		
@@ -152,19 +150,29 @@ public class Connect6Board extends Board {
 	public void setPiece(int c, int i) {
 		int localRows = 0;
 		for(int k = 0; k < rows; k++) {
-			if(board[localRows][c] == 1 && localRows < rows - 1) {
+			if(localRows < rows - 1 && board[localRows][c] == 0 ) {
 				localRows++;
+				System.out.println(localRows);
 			}
 		}
-		
-		if(localRows == 0 && board[localRows][c] == 1 ) {
+		if(localRows == 0 && board[localRows][c] == 0 ) {
 			board[localRows][c] = i;
+			
+			System.out.println("made it to loop 1");
+			checkWin(localRows, c, i);
 		}
-		else if(localRows < rows &&  board[localRows][c] == 1 ) {
+		else if(localRows < rows &&  board[localRows][c] == 0 ) {
 			board[localRows][c] = i;
+			
+			System.out.println("made it to loop 2");
+			checkWin(localRows, c, i);
+			
 		}
-		else if(board[localRows][c] != 1) {
+		else if(board[localRows][c] != 0) {
 			board[localRows - 1][c] = i;
+			
+			System.out.println("made it to loop 3");
+			checkWin(localRows - 1, c, i);
 		}
 		else {
 			System.out.println("local rows = " + localRows);
