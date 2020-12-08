@@ -206,7 +206,7 @@ public class Connect5Board extends Board {
          int i;
          for(int c = 0; c < cols; c++){
              for (int r = 0; r < rows; r++){
-                if(board[r][c] != 0){
+                if(board[r][c] != 0 && board[r][c] != 4){
                      i = board[r][c];
                      if(checkWin(r,c,i)){
                          return true;

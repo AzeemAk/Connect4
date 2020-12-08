@@ -47,38 +47,39 @@ public class Runner extends Application{
 		Connect5Board gameBoard = new Connect5Board();
                 PlayerPiece pPiece = new PlayerPiece();
                 CpuPiece cPiece = new CpuPiece();
+                FreePiece fPiece = new FreePiece();
                 
-                pPiece.place(gameBoard, 5);
+                cPiece.place(gameBoard, 5);
                 gameBoard.printBoard();
-                cPiece.place(gameBoard, 6);
-                gameBoard.printBoard();
-                cPiece.place(gameBoard, 7);
-                gameBoard.printBoard();
-                cPiece.place(gameBoard, 7);
+                pPiece.place(gameBoard, 6);
                 gameBoard.printBoard();
                 pPiece.place(gameBoard, 7);
                 gameBoard.printBoard();
-                
-                cPiece.place(gameBoard, 8);
+                pPiece.place(gameBoard, 7);
                 gameBoard.printBoard();
+                cPiece.place(gameBoard, 7);
+                gameBoard.printBoard();
+                
                 pPiece.place(gameBoard, 8);
                 gameBoard.printBoard();
                 cPiece.place(gameBoard, 8);
                 gameBoard.printBoard();
                 pPiece.place(gameBoard, 8);
                 gameBoard.printBoard();
+                cPiece.place(gameBoard, 8);
+                gameBoard.printBoard();
                 
-                cPiece.place(gameBoard, 9);
-                gameBoard.printBoard();
                 pPiece.place(gameBoard, 9);
                 gameBoard.printBoard();
                 cPiece.place(gameBoard, 9);
                 gameBoard.printBoard();
                 pPiece.place(gameBoard, 9);
                 gameBoard.printBoard();
-                pPiece.place(gameBoard, 9);
+                cPiece.place(gameBoard, 9);
                 gameBoard.printBoard();
-                pPiece.place(gameBoard, 6);
+                cPiece.place(gameBoard, 9);
+                gameBoard.printBoard();
+                fPiece.place(gameBoard, 6);
                 gameBoard.printBoard(); 
                 
 
