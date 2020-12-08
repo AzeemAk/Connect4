@@ -9,5 +9,6 @@
  * @author azeem
  */
 public interface Piece {
-    public void place(Board b, int c);
+    public void place(Board b, int c);              //fuctions to either place a piece in a certain spot or in a random spot.
+    public int randomPlace(Board b);
 }
