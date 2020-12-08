@@ -1,17 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package GroupProject;
 
-/**
- *
- * @author azeem
- */
 public abstract class Board {
-    private int rows;
-    private int cols;
-    private int[][] board;
+	
     public abstract void setBoard();
     public abstract int[][] getBoard();
     public abstract boolean checkWin(int r, int c, int i);
