@@ -8,15 +8,14 @@
  *
  * @author azeem
  */
-public class PlayerPiece implements Piece{           //changing the integer input of each piece to a certain number
-    public void place(Board b, int c) {              // so we can keep track of who owns a certain piece.
-		b.setPiece(c, 2);
-		
-	}
+public class FreePiece implements Piece {
+    public void place(Board b, int c){                                     //changing the integer input of each piece to a certain number
+        b.setPiece(c, 4);                                                  // so we can keep track of who owns a certain piece.
+         
+    }
     public int randomPlace(Board b){
         int randNum = (int) (Math.random() * ((b.getCols()-1) - 0 + 1) + 0);
-        b.setPiece(randNum, 2);
-
+	b.setPiece(randNum, 4);
         return randNum + 1;
     }
 }
